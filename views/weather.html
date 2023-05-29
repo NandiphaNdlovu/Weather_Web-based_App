@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather</title>
+</head>
+<body>
+  <h1>Current Weather</h1>
+  <div id="weather-container"></div>
+
+  <script>
+    // Fetch weather data and display it on the page
+    fetch('/weather?location=London')
+      .then(response => response.json())
+      .then(data => {
+        const weatherContainer = document.getElementById('weather-container');
+        const { location, current } = data;
+        const { temp_c, condition } = current;
+
+        // Create and append weather information to the container
+        const weatherInfo = document.createElement('div');
+        weatherInfo.innerHTML = `
+          <h2>${location.name}, ${location.country}</h2>
+          <p>Temperature: ${temp_c}°C</p>
+          <p>Condition: ${condition.text}</p>
+        `;
+        weatherContainer.appendChild(weatherInfo);
+      })
+      .catch(error => {
+        console.log('Error fetching weather data:', error);
+      });
+  </script>
+</body>
+</html>
