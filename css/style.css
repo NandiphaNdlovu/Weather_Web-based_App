@@ -1,0 +1,35 @@
+body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+    margin:0;
+    background: blueviolet;
+}
+.content-container{
+    background: green;
+    padding: 2em;
+    width: 100%;
+    max-width: 500px;
+    margin: 1em;
+}
+.content-container>div{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 25px;
+    margin: 10px;
+}
+.content{
+    text-align: center;
+}
+.weather_today{
+    background: rgba(255, 255, 255, 0);
+}
+.weather_hourly{
+    background: rgb(255, 255, 255);
+}
+.weather_day{
+    background: rgb(255, 255, 255);
+}
