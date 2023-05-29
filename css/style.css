@@ -21,15 +21,26 @@ body{
     border-radius: 25px;
     margin: 10px;
 }
-.content{
-    text-align: center;
-}
 .weather_today{
     background: rgba(255, 255, 255, 0);
 }
 .weather_hourly{
     background: rgb(255, 255, 255);
+    gap: 10px;
+    position: relative;
+    margin:10px;
+    overflow-x: scroll;
 }
+.content{
+    display: inline-block;
+    padding: 10px;
+    text-align: center;
+    margin-left: 10px
+}
+.content:first-child {
+    margin-left: 0;
+}
+
 .weather_day{
     background: rgb(255, 255, 255);
 }
