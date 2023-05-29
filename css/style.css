@@ -2,7 +2,6 @@ body{
     display:flex;
     justify-content: center;
     align-items: center;
-    height:100vh;
     margin:0;
     background: blueviolet;
 }
@@ -13,7 +12,7 @@ body{
     max-width: 500px;
     margin: 1em;
 }
-.content-container>div{
+.content-container>.weather_today,.weather_hourly,.weather_day{
     display:flex;
     justify-content: center;
     align-items: center;
@@ -26,21 +25,19 @@ body{
 }
 .weather_hourly{
     background: rgb(255, 255, 255);
-    gap: 10px;
-    position: relative;
-    margin:10px;
     overflow-x: scroll;
 }
-.content{
-    display: inline-block;
-    padding: 10px;
+.content-1,.content-3{
+    padding: 5px;
     text-align: center;
-    margin-left: 10px
 }
-.content:first-child {
+.content-2{
+    padding:5px;
+}
+.content-2:first-child {
+    padding:5px;
     margin-left: 0;
 }
-
 .weather_day{
     background: rgb(255, 255, 255);
 }
