@@ -6,6 +6,8 @@ const port = 3000; // Choose an available port number
 
 app.use(express.static(path.join(__dirname, "views")));
 app.use(express.static(path.join(__dirname, "css")));
+app.use(express.static(path.join(__dirname, "images")));
+
 
 
 
@@ -40,8 +42,13 @@ app.get("/weather", async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "weather.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
+
+app.get("/css/style.css", (req, res) => {
+  res.sendFile(path.join(__dirname, "css/style.css"));
+})
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
