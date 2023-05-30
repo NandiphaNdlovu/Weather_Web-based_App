@@ -17,6 +17,8 @@ app.get("/weather", async (req, res) => {
     const response = await fetch.default(apiUrl);
     const responseBody = await response.text();
 
+    console.log("Raw Response Body:", responseBody);
+
     let jsonData;
     try {
       jsonData = JSON.parse(responseBody);
