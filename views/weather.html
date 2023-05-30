@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Weather</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <h1>Current Weather</h1>
@@ -40,10 +41,18 @@
     // Function to fetch the weather data based on the input location
     function fetchWeather() {
       const locationInput = document.getElementById("location-input");
-      const location = locationInput.value;
+      const location = () =>{
+        if(locationInput.value === ""){
+          alert("Please enter a location");
+          document.getElementById("location-input").value = "Durban"
+          return "Durban";
+        }else{
+          return locationInput.value;
+        }
+      }
 
       // Fetch the weather data from the server
-      fetch(`/weather?location=${location}`)
+      fetch(`/weather?location=${location()}`)
         .then(response => response.json())
         .then(weatherData => {
           updateWeather(weatherData);
