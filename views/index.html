@@ -21,6 +21,7 @@
         <script>
             function updateWeather(weatherData) {
                 const weatherTodayElement = document.getElementById("weather_today");
+                const weatherHourlyElement = document.getElementById("weather_hourly");
 
                 const location = weatherData.location.name;
                 const temperature = weatherData.current.temp_c;
@@ -40,35 +41,8 @@
                     <!--This should be a nav so it remains on the top of the screen but only showing the location, temp and conditions-->
                 </div>
                 `;
-            }
-            function fetchWeather() {
-                const locationInput = document.getElementById("location-input");
-                const location = () => {
-                    if (locationInput.value === "") {
-                        alert("Please enter a location");
-                        document.getElementById("location-input").value = "Durban"
-                        return "Durban";
-                    } else {
-                        return locationInput.value;
-                    }
-                }
 
-                // Fetch the weather data from the server
-                fetch(`/weather?location=${location()}`)
-                    .then(response => response.json())
-                    .then(weatherData => {
-                        updateWeather(weatherData);
-                    })
-                    .catch(error => {
-                        console.log("Error fetching weather data:", error);
-                    });
-            }
-        </script>
-
-        <div class="weather_today" id="weather_today"></div>
-
-        <div class="weather_hourly">
-            <div class="content-2">
+                weatherHourlyElement.innerHTML = `<div class="content-2">
                 <h2>Now</h2>
                 <img class="weather-icon" src="/images/icons8-cloud-lightning.gif" alt="">
                 <h4>temp°</h4>
@@ -123,8 +97,37 @@
                 <h2>hour</h2>
                 <img class="weather-icon" src="/images/icons8-cloud-lightning.gif" alt="">
                 <h4>temp°</h4>
-            </div>
-        </div>
+            </div>`
+            }
+
+            function fetchWeather() {
+                const locationInput = document.getElementById("location-input");
+                const location = () => {
+                    if (locationInput.value === "") {
+                        alert("Please enter a location");
+                        document.getElementById("location-input").value = "Durban"
+                        return "Durban";
+                    } else {
+                        return locationInput.value;
+                    }
+                }
+
+                // Fetch the weather data from the server
+                fetch(`/weather?location=${location()}`)
+                    .then(response => response.json())
+                    .then(weatherData => {
+                        updateWeather(weatherData);
+                    })
+                    .catch(error => {
+                        console.log("Error fetching weather data:", error);
+                    });
+            }
+        </script>
+
+        <div class="weather_today" id="weather_today"></div>
+
+        <div class="weather_hourly" id="weather_hourly"></div>
+
         <div class="weather_day">
             <div class="content-3">
                 <h2>Location</h2>
