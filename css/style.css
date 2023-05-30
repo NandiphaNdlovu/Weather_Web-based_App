@@ -26,7 +26,14 @@ body{
 .weather_hourly{
     background: rgb(255, 255, 255);
     overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
+
+.weather_hourly::-webkit-scrollbar {
+    display: none;
+  }
+  
 .content-1,.content-3{
     padding: 5px;
     text-align: center;
