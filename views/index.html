@@ -44,8 +44,9 @@
 
                 weatherHourlyElement.innerHTML = `<div class="content-2">
                 <h2>Now</h2>
+                <h2>Current hour</h2>
                 <img class="weather-icon" src="/images/icons8-cloud-lightning.gif" alt="">
-                <h4>temp°</h4>
+                <h4>${weatherData.current.temp_c}°</h4>
                 <!--The hour, weather icon and tempretature sould be placed horizontanly next to eachother must be a scrolable section to view all the hours in between sun rise and sun set-->
             </div>
             <div class="content-2">
