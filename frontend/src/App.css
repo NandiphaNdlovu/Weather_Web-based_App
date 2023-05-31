@@ -63,11 +63,10 @@ body {
 }
 
 .content-scroll{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-flex;
+  justify-content: left;
+  align-items: start;
   padding: 10px;
-  border-radius: 25px;
   margin: 10px;
   background: rgb(255, 255, 255);
   overflow-x: scroll;

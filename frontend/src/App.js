@@ -58,7 +58,7 @@ function App() {
               <h2>{weatherData.current.location.localtime.substring(11, 16)}</h2>
               <img
                 className="weather-icon"
-                src="/images/icons8-cloud-lightning.gif"
+                src={weatherData.current.current.condition.icon}
                 alt="uhhhhh"
               />
               <h4>{weatherData.current.current.temp_c}°</h4>
@@ -66,15 +66,14 @@ function App() {
 
             {weatherData && (
               <div className="weather_hourly">
-
                 {/* This renders hourly data for a given day */}
                 <div className="content-scroll">
                 {weatherData.forecast.forecast.forecastday[0].hour.map((hour) => (
                   <div className="content-2" key={hour.time}>
-                    <h2>{hour.time}</h2>
+                    <h2>{hour.time.substring(11, 16)}</h2>
                     <img
                       className="weather-icon"
-                      src={`/images/${hour.condition.icon}`}
+                      src={hour.condition.icon}
                       alt=""
                     />
                     <h4>{hour.temp_c}°</h4>
@@ -93,7 +92,6 @@ function App() {
               <h1>Temp °</h1>
               <h3>Conditions</h3>
               <h4>high° low°</h4>
-              {/* Render 10-day weather summary here */}
             </div>
           </div>
         </div>
