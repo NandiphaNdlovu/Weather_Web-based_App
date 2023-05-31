@@ -54,9 +54,6 @@ body {
   text-align: center;
 }
 
-.content-2:first-child {
-  margin-left: 12.5em;
-}
 
 .weather_day {
   background: rgb(255, 255, 255);
