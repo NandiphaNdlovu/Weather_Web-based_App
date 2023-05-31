@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./App.css";
 
@@ -33,39 +33,49 @@ function CurrentWeather({ weatherData }) {
 }
 
 function HourlyWeather({ weatherData }) {
-  const scrollContainerRef = useRef(null);
-
   const handleScroll = (event) => {
-    const scrollContainer = scrollContainerRef.current;
-    const scrollDistance = 100;
-
-    if (scrollContainer) {
-      scrollContainer.scrollLeft += event.deltaX * scrollDistance;
+    const scrollElement = event.target;
+    const scrollDistance = 600;
+  
+    if (scrollElement) {
+      scrollElement.scrollLeft += event.deltaX * scrollDistance;
     }
   };
+  
+
+  const attachEventListeners = () => {
+    const scrollElement = document.querySelector(".content-scroll");
+    if (scrollElement) {
+      scrollElement.addEventListener("scroll", handleScroll, { passive: true });
+    }
+  };
+  
+  
 
   useEffect(() => {
-    const scrollContainer = scrollContainerRef.current;
-
-    if (scrollContainer) {
-      scrollContainer.addEventListener("wheel", handleScroll, { passive: false });
-    }
-
+    attachEventListeners();
+  
     return () => {
-      if (scrollContainer) {
-        scrollContainer.removeEventListener("wheel", handleScroll);
+      const scrollElement = document.querySelector(".content-scroll");
+      if (scrollElement) {
+        scrollElement.removeEventListener("scroll", handleScroll);
       }
     };
   }, []);
+  
 
   return (
     <div className="weather_hourly">
       {/* This renders hourly data for a given day */}
-      <div className="content-scroll" ref={scrollContainerRef}>
+      <div className="content-scroll">
         {weatherData.forecast.forecast.forecastday[0].hour.map((hour) => (
           <div className="content-2" key={hour.time}>
             <h2>{hour.time.substring(11, 16)}</h2>
-            <img className="weather-icon" src={hour.condition.icon} alt="" />
+            <img
+              className="weather-icon"
+              src={hour.condition.icon}
+              alt=""
+            />
             <h4>{hour.temp_c}°</h4>
           </div>
         ))}
@@ -120,40 +130,39 @@ function App() {
     const currentApiCall = `${apiUrl}current.json?key=${apiKey}&q=${location}&aqi=no`;
     const forecastApiCall = `${apiUrl}forecast.json?key=${apiKey}&q=${location}&days=10&aqi=no&alerts=no`;
 
-    try {
-      const [currentResponse, forecastResponse] = await Promise.all([
-        fetch(currentApiCall),
-        fetch(forecastApiCall),
-      ]);
+    try { const [currentResponse, forecastResponse] = await Promise.all([
+      fetch(currentApiCall),
+      fetch(forecastApiCall),
+    ]);
 
-      const [currentData, forecastData] = await Promise.all([
-        currentResponse.json(),
-        forecastResponse.json(),
-      ]);
+    const [currentData, forecastData] = await Promise.all([
+      currentResponse.json(),
+      forecastResponse.json(),
+    ]);
 
-      setWeatherData({ current: currentData, forecast: forecastData });
-    } catch (error) {
-      console.log("Error fetching weather data:", error);
-    }
-  };
+    setWeatherData({ current: currentData, forecast: forecastData });
+  } catch (error) {
+    console.log("Error fetching weather data:", error);
+  }
+};
 
-  return (
-    <div className="content-container">
-      <SearchBar
-        location={location}
-        setLocation={setLocation}
-        fetchWeather={fetchWeather}
-      />
+return (
+  <div className="content-container">
+    <SearchBar
+      location={location}
+      setLocation={setLocation}
+      fetchWeather={fetchWeather}
+    />
 
-      {weatherData && (
-        <div>
-          <CurrentWeather weatherData={weatherData} />
-          <HourlyWeather weatherData={weatherData} />
-          <DailyWeather weatherData={weatherData} />
-        </div>
-      )}
-    </div>
-  );
+    {weatherData && (
+      <div>
+        <CurrentWeather weatherData={weatherData} />
+        <HourlyWeather weatherData={weatherData} />
+        <DailyWeather weatherData={weatherData} />
+      </div>
+    )}
+  </div>
+);
 }
 
 export default App;
