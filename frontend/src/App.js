@@ -5,10 +5,10 @@ function App() {
   const [location, setLocation] = useState("");
   const [weatherData, setWeatherData] = useState(null);
 
-  const fetchWeather = (/* add parameters for api query */) => {
+  const fetchWeather = () => {
     if (location.trim() === "") {
       alert("Please enter a location");
-      return;
+      return "auto:ip";
     }
   
     const apiKey = "5a9d2c05e78649dba29133051232905";
@@ -30,8 +30,10 @@ function App() {
 
   return (
     <div className="content-container">
+
+      {/* Search Bar, move to seperate nav bar */}
       <div className="weather_search">
-        <label htmlFor="location-input">Location: </label>
+        <label htmlFor="location-input"></label>
         <input
           type="text"
           id="location-input"
