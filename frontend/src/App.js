@@ -120,39 +120,40 @@ function App() {
     const currentApiCall = `${apiUrl}current.json?key=${apiKey}&q=${location}&aqi=no`;
     const forecastApiCall = `${apiUrl}forecast.json?key=${apiKey}&q=${location}&days=10&aqi=no&alerts=no`;
 
-    try { const [currentResponse, forecastResponse] = await Promise.all([
-      fetch(currentApiCall),
-      fetch(forecastApiCall),
-    ]);
+    try {
+      const [currentResponse, forecastResponse] = await Promise.all([
+        fetch(currentApiCall),
+        fetch(forecastApiCall),
+      ]);
 
-    const [currentData, forecastData] = await Promise.all([
-      currentResponse.json(),
-      forecastResponse.json(),
-    ]);
+      const [currentData, forecastData] = await Promise.all([
+        currentResponse.json(),
+        forecastResponse.json(),
+      ]);
 
-    setWeatherData({ current: currentData, forecast: forecastData });
-  } catch (error) {
-    console.log("Error fetching weather data:", error);
-  }
-};
+      setWeatherData({ current: currentData, forecast: forecastData });
+    } catch (error) {
+      console.log("Error fetching weather data:", error);
+    }
+  };
 
-return (
-  <div className="content-container">
-    <SearchBar
-      location={location}
-      setLocation={setLocation}
-      fetchWeather={fetchWeather}
-    />
+  return (
+    <div className="content-container">
+      <SearchBar
+        location={location}
+        setLocation={setLocation}
+        fetchWeather={fetchWeather}
+      />
 
-    {weatherData && (
-      <div>
-        <CurrentWeather weatherData={weatherData} />
-        <HourlyWeather weatherData={weatherData} />
-        <DailyWeather weatherData={weatherData} />
-      </div>
-    )}
-  </div>
-);
+      {weatherData && (
+        <div>
+          <CurrentWeather weatherData={weatherData} />
+          <HourlyWeather weatherData={weatherData} />
+          <DailyWeather weatherData={weatherData} />
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default App;

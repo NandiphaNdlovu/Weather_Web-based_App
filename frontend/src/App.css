@@ -115,7 +115,7 @@ body {
 }
 
 .weather_search{
-  background-color: aqua;
+  background-color: rgb(157, 255, 255);
   position: fixed;
   top: 0;
   left: 0;
@@ -128,7 +128,7 @@ body {
 }
 .mButton, .mInput {
   background-color: transparent;
-  border: 2px solid rgba(0, 200, 255, 0.551);
+  border: 2px solid rgba(0, 130, 166, 0.91);
   border-radius: 5px;
 }
 
