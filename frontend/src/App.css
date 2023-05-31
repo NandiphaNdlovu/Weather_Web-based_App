@@ -1,38 +1,77 @@
-.App {
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  background: blueviolet;
+}
+
+.content-container {
+  background: green;
+  padding: 2em;
+  width: 100%;
+  max-width: 500px;
+  margin: 1em;
+  border-radius: 5%;
+}
+
+.content-container > .weather_today,
+.content-container > .weather_hourly,
+.content-container > .weather_day,
+.content-container > .weather_search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 25px;
+  margin: 10px;
+}
+
+.weather_today {
+  background: rgba(255, 255, 255, 0);
+}
+
+.weather_hourly {
+  background: rgb(255, 255, 255);
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  border-style: inherit;
+}
+
+.weather_hourly::-webkit-scrollbar {
+  display: none;
+}
+
+.content-1,
+.content-3 {
+  padding: 5px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.content-2 {
+  padding: 5px;
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.content-2:first-child {
+  margin-left: 12.5em;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.weather_day {
+  background: rgb(255, 255, 255);
+}
+
+.content-scroll{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  align-items: center;
+  padding: 10px;
+  border-radius: 25px;
+  margin: 10px;
+  background: rgb(255, 255, 255);
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  border-style: inherit;
 }
