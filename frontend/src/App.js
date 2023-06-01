@@ -37,7 +37,7 @@ function HourlyWeather({ weatherData }) {
 
   const handleScroll = (event) => {
     const scrollContainer = scrollContainerRef.current;
-    const scrollDistance = 100;
+    const scrollDistance = 200;
 
     if (scrollContainer && scrollContainer.matches(":hover")) {
       event.preventDefault();
