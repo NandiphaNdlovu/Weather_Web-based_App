@@ -35,6 +35,7 @@ body {
   display: flex;
   background: rgba(255, 255, 255, 0.392);
   overflow-x: auto;
+  height: max-content;
   -ms-overflow-style: auto;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
@@ -83,6 +84,7 @@ body {
   touch-action: pan-x;
   width: 100%;
   overflow-x: auto;
+  overflow-y: hidden;
   white-space: nowrap;
   justify-content: left;
   align-items: flex-end;
@@ -90,8 +92,8 @@ body {
   margin: 10px;
   background: rgba(255, 255, 255, 0.473);
   -ms-overflow-style: auto;
-  scrollbar-width: none;
   border-style: inherit;
+  scroll-behavior: smooth;
 }
 
 .content-scroll::-webkit-scrollbar {
