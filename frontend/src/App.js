@@ -21,6 +21,7 @@ function SearchBar({ location, setLocation, fetchWeather }) {
         onKeyPress={handleKeyPress}
       />
       <button className="mButton" onClick={fetchWeather}>Search</button>
+      
     </div>
   );
 }
@@ -30,11 +31,11 @@ function CurrentWeather({ weatherData }) {
   return (
     <div className="content-1">
       <h2>{weatherData.current.location.name}</h2>
-      <h1>{weatherData.current.current.temp_c}°C</h1>
+      <h1>{ Math.round(weatherData.current.current.temp_c)}°C</h1>
       <h3>{weatherData.current.current.condition.text}</h3>
       <h4>
-        {weatherData.forecast.forecast.forecastday[0].day.maxtemp_c}°C{" "}
-        {weatherData.forecast.forecast.forecastday[0].day.mintemp_c}°C
+        { Math.round(weatherData.forecast.forecast.forecastday[0].day.maxtemp_c)}°C{" "}
+        { Math.round(weatherData.forecast.forecast.forecastday[0].day.mintemp_c)}°C
       </h4>
     </div>
   );
@@ -42,6 +43,7 @@ function CurrentWeather({ weatherData }) {
 
 function HourlyWeather({ weatherData }) {
   const scrollContainerRef = useRef(null);
+  const currentHour = new Date().getHours();
 
   const handleScroll = (event) => {
     const scrollContainer = scrollContainerRef.current;
@@ -71,13 +73,19 @@ function HourlyWeather({ weatherData }) {
     <div className="weather_hourly">
       {/* This renders hourly data for a given day */}
       <div className="content-scroll" ref={scrollContainerRef}>
-        {weatherData.forecast.forecast.forecastday[0].hour.map((hour) => (
-          <div className="content-2" key={hour.time}>
-            <h2>{hour.time.substring(11, 16)}</h2>
-            <img className="weather-icon" src={hour.condition.icon} alt="" />
-            <h4>{hour.temp_c}°</h4>
-          </div>
-        ))}
+        {weatherData.forecast.forecast.forecastday[0].hour.map((hour, index) => {
+          const hourIndex = (currentHour + index) % 24;
+          const formattedHour = hourIndex.toString().padStart(2, "0") + ":00";
+
+          return (
+            <div className="content-2" key={hour.time}>
+              <h2>{formattedHour}</h2>
+              <img className="weather-icon" src={hour.condition.icon} alt="" />
+              <h4>{Math.round(hour.temp_c)}°</h4>
+            </div>
+            
+          );
+        })}
       </div>
     </div>
   );
@@ -113,9 +121,9 @@ function DailyWeather({ weatherData }) {
               <img src={getConditionIcon(day.day.condition.text)} alt="{day.day.condition.icon}" />
             </div>
             <div className="temp">
-              <h2>{day.day.mintemp_c}°C</h2>
+              <h2>{Math.round(day.day.mintemp_c)}°C</h2>
               <div className={`temp-bar ${getTempColor(day.day.mintemp_c)}`}></div>
-              <h2>{day.day.maxtemp_c}°C</h2>
+              <h2>{Math.round(day.day.maxtemp_c)}°C</h2>
             </div>
           </li>
         ))}
