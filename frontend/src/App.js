@@ -92,7 +92,7 @@ function DailyWeather({ weatherData }) {
             </div>
             <div className="info">
               <h1>{day.day.condition.text}</h1>
-              <img src={day.day.condition.icon} alt="" />
+              <img src={getConditionIcon(day.day.condition.text)} alt="{day.day.condition.icon}" />
               <h2>{day.day.mintemp_c}°C - {day.day.maxtemp_c}°C</h2>
             </div>
           </li>
@@ -102,6 +102,36 @@ function DailyWeather({ weatherData }) {
   );
 }
 
+function getConditionIcon(txt){
+  console.log(txt);
+  switch(txt){
+    case "Sunny":
+      return "/images-x/icons8-sun.gif";
+    case "Patchy rain possible":
+      return "/images-x/icons8-rain.gif";
+    case "Cloudy":
+      return "/images-x/icons8-rain-cloud.gif";
+    case "Partly cloudy":
+      return "/images-x/icons8-partly-cloudy-day.gif";
+    case "Overcast":
+      return "/images-x/icons8-rain-cloud.gif";
+    case "Moderate rain":
+      return "/images-x/icons8-rainfall.gif";
+    case "Heavy rain":
+      return "/images-x/icons8-heavy-rain.gif";
+    case "Moderate or heavy snow showers":
+      return "/images-x/icons8-snow-storm.gif";
+    case "Moderate or heavy sleet":
+      return "/images-x/icons8-storm.gif";
+    case "Light snow":
+      return "/images-x/icons8-light-snow.gif";
+    case "Fog":
+      return "/images-x/icons8-fog.gif";
+    case "Light freezing rain":
+      return "/images-x/icons8-light-rain.gif";
+    default:
+      return "";}
+}
 
 
 function App() {
@@ -115,7 +145,6 @@ function App() {
 
   const fetchWeather = async () => {
     if (location.trim() === "") {
-      alert("Please enter a location");
       location = "auto:ip";
     }
 
@@ -140,6 +169,10 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    fetchWeather();
+  }, []);
+
   return (
     <div className="content-container">
       <SearchBar
@@ -158,6 +191,7 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
 

@@ -7,7 +7,7 @@ body {
 }
 
 .content-container {
-  background: green;
+  background: rgb(255, 255, 255);
   background-image: url("https://giphy.com/embed/RlwF2vFb4y7bDnWvcO");
   padding: 2em;
   width: 100%;
@@ -41,6 +41,7 @@ body {
   -ms-overflow-style: auto;
   -webkit-overflow-scrolling: touch;
   border-style: inherit;
+  scrollbar-width: none;
 }
 
 .content-1,
@@ -95,6 +96,8 @@ body {
   -ms-overflow-style: auto;
   border-style: inherit;
   scroll-behavior: smooth;
+  scrollbar-color: rgba(62, 255, 255, 0.582) transparent;
+  scrollbar-gutter: stable;
 }
 
 
