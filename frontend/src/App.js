@@ -79,7 +79,6 @@ function HourlyWeather({ weatherData }) {
 
 
 
-
 function DailyWeather({ weatherData }) {
   return (
     <div className="weather_daily">
@@ -93,9 +92,8 @@ function DailyWeather({ weatherData }) {
             </div>
             <div className="info">
               <h1>{day.day.condition.text}</h1>
-              <h2>
-                {day.day.mintemp_c}°C - {day.day.maxtemp_c}°C
-              </h2>
+              <img src={day.day.condition.icon} alt="" />
+              <h2>{day.day.mintemp_c}°C - {day.day.maxtemp_c}°C</h2>
             </div>
           </li>
         ))}

@@ -8,6 +8,7 @@ body {
 
 .content-container {
   background: green;
+  background-image: url("https://giphy.com/embed/RlwF2vFb4y7bDnWvcO");
   padding: 2em;
   width: 100%;
   max-width: 500px;
@@ -109,8 +110,8 @@ body {
 }
 
 .weather-icon {
-  width: 50px;
-  height: 50px;
+  width: 75px;
+  height: 75px;
 }
 
 .weather_search{
@@ -150,8 +151,8 @@ li {
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   margin: 20px;
-  width: 400px;
-  max-width: 80%;
+  width: 40rem;
+  max-width: 400px;
 }
 
 .day {
@@ -161,7 +162,10 @@ li {
 }
 
 .info {
-    justify-content: end;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
 }
 
 .info h1 {
