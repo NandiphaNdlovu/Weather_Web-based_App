@@ -3,6 +3,12 @@ import React, { useState, useEffect, useRef } from "react";
 import "./App.css";
 
 function SearchBar({ location, setLocation, fetchWeather }) {
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      fetchWeather();
+    }
+  };
+
   return (
     <div className="weather_search">
       <label htmlFor="location-input"></label>
@@ -12,11 +18,13 @@ function SearchBar({ location, setLocation, fetchWeather }) {
         id="location-input"
         value={location}
         onChange={(event) => setLocation(event.target.value)}
+        onKeyPress={handleKeyPress}
       />
       <button className="mButton" onClick={fetchWeather}>Search</button>
     </div>
   );
 }
+
 
 function CurrentWeather({ weatherData }) {
   return (

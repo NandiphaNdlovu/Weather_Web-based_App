@@ -130,11 +130,34 @@ body {
   border-bottom-right-radius: 10px;
   padding: 1em;
 }
-.mButton, .mInput {
-  background-color: transparent;
-  border: 2px solid rgba(0, 130, 166, 0.91);
-  border-radius: 5px;
-  margin-left: 1em;
+.mInput {
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 1rem 0 0 1rem;
+  background-color: #f2f2f2;
+  color: #333;
+  transition: all 0.2s ease-in-out;
+}
+
+.mInput:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+.mButton {
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 0 1rem 1rem 0;
+  background-color: #333;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.mButton:hover {
+  background-color: #222;
 }
 
 .weather_daily {
