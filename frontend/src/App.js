@@ -136,29 +136,29 @@ function getConditionIcon(txt){
   console.log(txt);
   switch(txt){
     case "Sunny":
-      return "/images-x/icons8-sun.gif";
+      return "/images-x/sun.gif";
     case "Patchy rain possible":
-      return "/images-x/icons8-rain.gif";
+      return "/images-x/rain.gif";
     case "Cloudy":
-      return "/images-x/icons8-rain-cloud.gif";
+      return "/images-x/rain-cloud.gif";
     case "Partly cloudy":
-      return "/images-x/icons8-partly-cloudy-day.gif";
+      return "/images-x/partly-cloudy-day.gif";
     case "Overcast":
-      return "/images-x/icons8-rain-cloud.gif";
+      return "/images-x/rain-cloud.gif";
     case "Moderate rain":
-      return "/images-x/icons8-rainfall.gif";
+      return "/images-x/rainfall.gif";
     case "Heavy rain":
-      return "/images-x/icons8-heavy-rain.gif";
+      return "/images-x/heavy-rain.gif";
     case "Moderate or heavy snow showers":
-      return "/images-x/icons8-snow-storm.gif";
+      return "/images-x/snow-storm.gif";
     case "Moderate or heavy sleet":
-      return "/images-x/icons8-storm.gif";
+      return "/images-x/sleet.png";
     case "Light snow":
-      return "/images-x/icons8-light-snow.gif";
+      return "/images-x/light-snow.gif";
     case "Fog":
-      return "/images-x/icons8-fog.gif";
+      return "/images-x/fog.gif";
     case "Light freezing rain":
-      return "/images-x/icons8-light-rain.gif";
+      return "/images-x/hail.png";
     default:
       return "";}
 }
