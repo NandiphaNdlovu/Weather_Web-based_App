@@ -215,23 +215,23 @@ li {
   margin-top: 11px;
 }
 .lightblue {
-  background-color: lightblue;
+  background-image: linear-gradient(to right, lightblue,green);
 }
 
 .green {
-  background-color: green;
+  background-image: linear-gradient(to right, green,yellow);
 }
 
 .yellow {
-  background-color: yellow;
+  background-image: linear-gradient(to right, yellow,orange);
 }
 
 .orange {
-  background-color: orange;
+  background-image: linear-gradient(to right, orange,red);
 }
 
 .red {
-  background-color: red;
+  background-image: linear-gradient(to right, red,maroon);
 }
 
 .content-3 {
