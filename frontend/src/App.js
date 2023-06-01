@@ -83,9 +83,19 @@ function HourlyWeather({ weatherData }) {
   );
 }
 
-
-
-
+function getTempColor(temperature) {
+  if (temperature >= 0 && temperature <= 15) {
+    return "lightblue";
+  } else if (temperature > 15 && temperature <= 20) {
+    return "green";
+  } else if (temperature > 20 && temperature <= 25) {
+    return "yellow";
+  } else if (temperature > 25 && temperature <= 30) {
+    return "orange";
+  } else {
+    return "red";
+  }
+}
 
 function DailyWeather({ weatherData }) {
   return (
@@ -94,14 +104,18 @@ function DailyWeather({ weatherData }) {
         {weatherData.forecast.forecast.forecastday.map((day) => (
           <li key={day.date}>
             <div className="day">
-              {new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(
+              {new Intl.DateTimeFormat("en-US", { weekday: "short" }).format(
                 new Date(day.date)
               )}
             </div>
             <div className="info">
-              <h1>{day.day.condition.text}</h1>
+              <h3>{day.day.condition.text}</h3>
               <img src={getConditionIcon(day.day.condition.text)} alt="{day.day.condition.icon}" />
-              <h2>{day.day.mintemp_c}°C - {day.day.maxtemp_c}°C</h2>
+            </div>
+            <div className="temp">
+              <h2>{day.day.mintemp_c}°C</h2>
+              <div className={`temp-bar ${getTempColor(day.day.mintemp_c)}`}></div>
+              <h2>{day.day.maxtemp_c}°C</h2>
             </div>
           </li>
         ))}
