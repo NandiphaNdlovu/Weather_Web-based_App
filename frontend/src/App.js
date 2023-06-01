@@ -39,7 +39,8 @@ function HourlyWeather({ weatherData }) {
     const scrollContainer = scrollContainerRef.current;
     const scrollDistance = 100;
 
-    if (scrollContainer) {
+    if (scrollContainer && scrollContainer.matches(":hover")) {
+      event.preventDefault();
       scrollContainer.scrollLeft += event.deltaX * scrollDistance;
     }
   };
@@ -48,12 +49,12 @@ function HourlyWeather({ weatherData }) {
     const scrollContainer = scrollContainerRef.current;
 
     if (scrollContainer) {
-      scrollContainer.addEventListener("wheel", handleScroll, { passive: false });
+      scrollContainer.onwheel = handleScroll;
     }
 
     return () => {
       if (scrollContainer) {
-        scrollContainer.removeEventListener("wheel", handleScroll);
+        scrollContainer.onwheel = null;
       }
     };
   }, []);
@@ -73,6 +74,10 @@ function HourlyWeather({ weatherData }) {
     </div>
   );
 }
+
+
+
+
 
 
 function DailyWeather({ weatherData }) {

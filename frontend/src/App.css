@@ -11,8 +11,9 @@ body {
   padding: 2em;
   width: 100%;
   max-width: 500px;
-  margin: 1em;
-  border-radius: 5%;
+  margin: 2em;
+  margin-top: 5em;
+  border-radius: 2.5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -34,11 +35,10 @@ body {
 .weather_hourly {
   display: flex;
   background: rgba(255, 255, 255, 0.392);
-  overflow-x: auto;
+  overflow-x: scroll;
   height: max-content;
   -ms-overflow-style: auto;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
   border-style: inherit;
 }
 
@@ -83,7 +83,7 @@ body {
   -webkit-overflow-scrolling: touch;
   touch-action: pan-x;
   width: 100%;
-  overflow-x: auto;
+  overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
   justify-content: left;
@@ -96,9 +96,6 @@ body {
   scroll-behavior: smooth;
 }
 
-.content-scroll::-webkit-scrollbar {
-  display: none;
-}
 
 .content-2 h2 {
   font-size: 24px;
@@ -117,21 +114,23 @@ body {
 }
 
 .weather_search{
-  background-color: rgb(157, 255, 255);
+  background-color: rgba(157, 255, 255, 0.51);
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  width: 95%;
+  width: 90%;
   margin-left: 2.5%;
   margin-right: 2.5%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  padding: 1em;
 }
 .mButton, .mInput {
   background-color: transparent;
   border: 2px solid rgba(0, 130, 166, 0.91);
   border-radius: 5px;
+  margin-left: 1em;
 }
 
 .weather_daily {
