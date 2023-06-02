@@ -92,11 +92,17 @@ function HourlyWeather({ weatherData }) {
 }
 
 function getTempColor(minTemp, maxTemp) {
-  if (minTemp >= 0 && maxTemp <= 20) return "lightblue";
-  if (minTemp <= 15 && maxTemp <= 25) return "green";
-  if (minTemp <= 20 && maxTemp <= 30) return "yellow";
-  if (minTemp <= 30) return "orange";
-  return "red";
+  if (maxTemp >= 35) {
+    return "gradient-red";
+  } else if (maxTemp >= 30) {
+    return "gradient-orange";
+  } else if (maxTemp >= 25) {
+    return "gradient-yellow";
+  } else if (maxTemp >= 20) {
+    return "gradient-green";
+  } else {
+    return "gradient-lightblue";
+  }
 }
 
 
