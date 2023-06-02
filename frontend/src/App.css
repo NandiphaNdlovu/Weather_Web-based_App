@@ -15,13 +15,13 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0;
-  background: rgba(115, 136, 255, 0.732);
+  background: rgba(76, 85, 136, 0.732);
 }
 
 .content-container {
   background: rgba(108, 143, 212, 0.359);
   background-image: url("https://media.giphy.com/media/0Styincf6K2tvfjb5Q/giphy.gif");
-  background-size: 1400px;
+  background-size: 1256px;
   padding: 2em;
   width: 100%;
   max-width: 500px;
