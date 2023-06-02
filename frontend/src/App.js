@@ -41,7 +41,7 @@ function changeBackgroundImage(weatherCondition) {
     var element = elements[i];
 
     if (weatherCondition === 'Sunny') {
-      element.style.backgroundImage = "url('https://media.giphy.com/media/0Styincf6K2tvfjb5Q/giphy.gif')";
+      element.style.backgroundImage = "url('https://www.kapwing.com/videos/6479f6b25173c1027b07a784')";
     } else if (weatherCondition === 'Partly cloudy') {
       element.style.backgroundImage = "url('https://media.giphy.com/media/0Styincf6K2tvfjb5Q/giphy.gif')";
     } else if (weatherCondition === 'cloudy') {
@@ -53,11 +53,12 @@ function changeBackgroundImage(weatherCondition) {
 
 
 function CurrentWeather({ weatherData }) {
+  changeBackgroundImage(weatherData.current.current.condition.text)
   return (
     <div className="content-1">
       <h2>{weatherData.current.location.name}</h2>
       <h1>{Math.round(weatherData.current.current.temp_c)}°C</h1>
-      <h3>{changeBackgroundImage(weatherData.current.current.condition.text)}</h3>
+      <h3>{weatherData.current.current.condition.text}</h3>
       <h4>
       { Math.round(weatherData.forecast.forecast.forecastday[0].day.mintemp_c)}°C{" - "}
       { Math.round(weatherData.forecast.forecast.forecastday[0].day.maxtemp_c)}°C
