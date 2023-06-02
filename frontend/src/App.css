@@ -19,7 +19,8 @@ body {
 
 .content-container {
   background: rgba(108, 143, 212, 0.359);
-  /*background-image: url("https://media.giphy.com/media/3o6gDQeSNqf3DlIUbC/giphy.gif");*/
+  background-image: url("https://media.giphy.com/media/0Styincf6K2tvfjb5Q/giphy.gif");
+  background-size: 1400px;
   padding: 2em;
   width: 100%;
   max-width: 500px;
@@ -42,7 +43,6 @@ body {
 
 .weather_today {
   background: rgba(255, 255, 255, 0);
-  background-image: url("https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmFiZWU1ZjkxZjY1OTFlYmVlNGQyMzMxOWE5NzczMmY5MDE1ZDMzYyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/lSzQjkthGS1gc/giphy.gif");
 }
 
 .weather_hourly {
@@ -75,7 +75,7 @@ body {
 }
 
 .content-2 {
-  background-color: rgba(101, 138, 216, 0.888);
+  background-color: rgba(101, 137, 216, 0.345);
   display: flex;
   flex-direction: column;
   align-items: center;
