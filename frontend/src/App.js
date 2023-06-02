@@ -91,19 +91,14 @@ function HourlyWeather({ weatherData }) {
   );
 }
 
-function getTempColor(temperature) {
-  if (temperature >= 0 && temperature <= 15) {
-    return "lightblue";
-  } else if (temperature > 15 && temperature <= 20) {
-    return "green";
-  } else if (temperature > 20 && temperature <= 25) {
-    return "yellow";
-  } else if (temperature > 25 && temperature <= 30) {
-    return "orange";
-  } else {
-    return "red";
-  }
+function getTempColor(minTemp, maxTemp) {
+  if (minTemp >= 0 && maxTemp <= 20) return "lightblue";
+  if (minTemp <= 15 && maxTemp <= 25) return "green";
+  if (minTemp <= 20 && maxTemp <= 30) return "yellow";
+  if (minTemp <= 30) return "orange";
+  return "red";
 }
+
 
 function DailyWeather({ weatherData }) {
   return (
@@ -122,7 +117,7 @@ function DailyWeather({ weatherData }) {
             </div>
             <div className="temp">
               <h2>{Math.round(day.day.mintemp_c)}°C</h2>
-              <div className={`temp-bar ${getTempColor(day.day.mintemp_c)}`}></div>
+              <div className={`temp-bar ${getTempColor(day.day.mintemp_c, day.day.maxtemp_c)}`}></div>
               <h2>{Math.round(day.day.maxtemp_c)}°C</h2>
             </div>
           </li>
