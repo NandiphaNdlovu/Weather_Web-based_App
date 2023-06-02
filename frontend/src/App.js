@@ -34,8 +34,8 @@ function CurrentWeather({ weatherData }) {
       <h1>{ Math.round(weatherData.current.current.temp_c)}°C</h1>
       <h3>{weatherData.current.current.condition.text}</h3>
       <h4>
-        { Math.round(weatherData.forecast.forecast.forecastday[0].day.maxtemp_c)}°C{" "}
-        { Math.round(weatherData.forecast.forecast.forecastday[0].day.mintemp_c)}°C
+      { Math.round(weatherData.forecast.forecast.forecastday[0].day.mintemp_c)}°C{" - "}
+      { Math.round(weatherData.forecast.forecast.forecastday[0].day.maxtemp_c)}°C
       </h4>
     </div>
   );
@@ -105,7 +105,7 @@ function DailyWeather({ weatherData }) {
     <div className="weather_daily">
       <ul>
         {weatherData.forecast.forecast.forecastday.map((day) => (
-          <li key={day.date}>
+          <li key={day.date} className="weather_daily_card">
             <div className="day">
               {new Intl.DateTimeFormat("en-US", { weekday: "short" }).format(
                 new Date(day.date)
