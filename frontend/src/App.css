@@ -20,7 +20,8 @@ body {
 
 .content-container {
   background: rgba(108, 143, 212, 0.359);
-  background-image: url("https://media.giphy.com/media/0Styincf6K2tvfjb5Q/giphy.gif");
+  transition: background-image 0.5s ease;
+  /*background-image: url("https://media.giphy.com/media/0Styincf6K2tvfjb5Q/giphy.gif");*/
   background-size: 1256px;
   padding: 2em;
   width: 100%;

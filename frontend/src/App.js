@@ -26,13 +26,38 @@ function SearchBar({ location, setLocation, fetchWeather }) {
   );
 }
 
+function changeBackgroundImage(weatherCondition) {
+  // Get a collection of elements with the specified class name
+  var elements = document.getElementsByClassName('content-container');
+
+  // Check if any elements with the class name exist
+  if (elements.length === 0) {
+    console.error("No elements found with class name 'myElement'.");
+    return;
+  }
+
+  // Iterate over the elements and change the background image accordingly
+  for (var i = 0; i < elements.length; i++) {
+    var element = elements[i];
+
+    if (weatherCondition === 'Sunny') {
+      element.style.backgroundImage = "url('https://media.giphy.com/media/0Styincf6K2tvfjb5Q/giphy.gif')";
+    } else if (weatherCondition === 'Partly cloudy') {
+      element.style.backgroundImage = "url('https://media.giphy.com/media/0Styincf6K2tvfjb5Q/giphy.gif')";
+    } else if (weatherCondition === 'cloudy') {
+      element.style.backgroundImage = "url('path/to/cloudy-image.jpg')";
+    }
+    // Add more conditions for other weather conditions as needed
+  }
+}
+
 
 function CurrentWeather({ weatherData }) {
   return (
     <div className="content-1">
       <h2>{weatherData.current.location.name}</h2>
-      <h1>{ Math.round(weatherData.current.current.temp_c)}°C</h1>
-      <h3>{weatherData.current.current.condition.text}</h3>
+      <h1>{Math.round(weatherData.current.current.temp_c)}°C</h1>
+      <h3>{changeBackgroundImage(weatherData.current.current.condition.text)}</h3>
       <h4>
       { Math.round(weatherData.forecast.forecast.forecastday[0].day.mintemp_c)}°C{" - "}
       { Math.round(weatherData.forecast.forecast.forecastday[0].day.maxtemp_c)}°C
@@ -134,7 +159,6 @@ function DailyWeather({ weatherData }) {
 }
 
 function getConditionIcon(txt){
-  console.log(txt);
   switch(txt){
     case "Sunny":
       return "/images-x/sun.gif";
