@@ -10,6 +10,7 @@
   border-radius: 15px;
 }
 body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,6 +81,7 @@ body {
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  padding-bottom: 30px;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
   margin: 10px;
@@ -120,7 +122,7 @@ body {
 
 .content-2 h4 {
   font-size: 18px;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .weather-icon {
@@ -129,7 +131,7 @@ body {
 }
 
 .weather_search{
-  background-color: rgba(108, 207, 218, 0.608);
+  background-color: rgba(108, 194, 218, 0.608);
   position:fixed;
   top: 0;
   left: 0;
@@ -146,7 +148,7 @@ body {
   border: none;
   border-radius: 1rem 0 0 1rem;
   background-color: #f2f2f2;
-  color: #333;
+  color: #000000;
   transition: all 0.2s ease-in-out;
 }
 
@@ -160,7 +162,7 @@ body {
   font-size: 1.2rem;
   border: none;
   border-radius: 0 1rem 1rem 0;
-  background-color: #333;
+  background-color: #473b5c;
   color: #fff;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -198,7 +200,7 @@ li {
 
 .day {
   grid-column-start: 1;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .info {
@@ -233,24 +235,24 @@ li {
   border-color: rgb(0, 0, 0);
   border-width: 1px;
 }
-.lightblue {
-  background-image: linear-gradient(to right, lightblue,green);
+.gradient-lightblue {
+  background-image: linear-gradient(to right, lightblue, green);
 }
 
-.green {
-  background-image: linear-gradient(to right, green,yellow);
+.gradient-green {
+  background-image: linear-gradient(to right, green, yellow);
 }
 
-.yellow {
-  background-image: linear-gradient(to right, yellow,orange);
+.gradient-yellow {
+  background-image: linear-gradient(to right, yellow, orange);
 }
 
-.orange {
-  background-image: linear-gradient(to right, orange,red);
+.gradient-orange {
+  background-image: linear-gradient(to right, orange, red);
 }
 
-.red {
-  background-image: linear-gradient(to right, red,maroon);
+.gradient-red {
+  background-image: linear-gradient(to right, red, maroon);
 }
 
 .content-3 {
