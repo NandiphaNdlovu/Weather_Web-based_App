@@ -1,14 +1,26 @@
+::-webkit-scrollbar{
+  width: 5px;
+}
+::-webkit-scrollbar-track{
+  background: rgba(62, 130, 255, 0);
+  border-radius: 15px;
+}
+::-webkit-scrollbar-thumb{
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  width: 10px;
+}
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0;
-  background: blueviolet;
+  background: rgba(108, 123, 212, 0.732);
 }
 
 .content-container {
-  background: rgb(108, 124, 212);
-  background-image: url("https://giphy.com/embed/RlwF2vFb4y7bDnWvcO");
+  background: rgba(108, 123, 212, 0);
+  /*background-image: url("https://media.giphy.com/media/3o6gDQeSNqf3DlIUbC/giphy.gif");*/
   padding: 2em;
   width: 100%;
   max-width: 500px;
@@ -18,9 +30,9 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.content-container > .weather_today,
-.content-container > .weather_hourly,
-.content-container > .weather_day {
+.content-container .weather_today,
+.content-container .weather_hourly,
+.content-container .weather_day {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,16 +43,16 @@ body {
 
 .weather_today {
   background: rgba(255, 255, 255, 0);
+  background-image: url("https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYmFiZWU1ZjkxZjY1OTFlYmVlNGQyMzMxOWE5NzczMmY5MDE1ZDMzYyZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/lSzQjkthGS1gc/giphy.gif");
 }
 
 .weather_hourly {
   display: flex;
-  background: rgba(255, 255, 255, 0.392);
-  overflow-x: scroll;
   height: max-content;
   -ms-overflow-style: auto;
   -webkit-overflow-scrolling: touch;
   border-style: inherit;
+  border-radius: 15px;
   scrollbar-width: none;
 }
 
@@ -76,7 +88,7 @@ body {
 }
 
 .weather_day {
-  background: rgb(255, 255, 255);
+  background: rgba(108, 123, 212, 0);
 }
 
 .content-scroll{
@@ -92,7 +104,8 @@ body {
   align-items: flex-end;
   padding: 10px;
   margin: 10px;
-  background: rgba(255, 255, 255, 0.473);
+  background: rgba(108, 123, 212, 0);
+  border-radius: 15px;
   -ms-overflow-style: auto;
   border-style: inherit;
   scroll-behavior: smooth;
