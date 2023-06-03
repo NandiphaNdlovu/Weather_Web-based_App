@@ -1,3 +1,4 @@
+//new with conversion
 import React, { useState, useEffect, useRef } from "react";
 
 import "./App.css";
@@ -11,7 +12,6 @@ function SearchBar({ location, setLocation, fetchWeather }) {
 
   return (
     <div className="weather_search">
-      <label htmlFor="location-input"></label>
       <input
         className="mInput"
         type="text"
@@ -21,7 +21,6 @@ function SearchBar({ location, setLocation, fetchWeather }) {
         onKeyPress={handleKeyPress}
       />
       <button className="mButton" onClick={fetchWeather}>Search</button>
-      
     </div>
   );
 }
@@ -68,17 +67,23 @@ function changeBackgroundImage(weatherCondition) {
   }
 }
 
+function CurrentWeather({ weatherData, isCelsius }) {
+  changeBackgroundImage(weatherData.current.current.condition.text);
 
-function CurrentWeather({ weatherData }) {
-  changeBackgroundImage(weatherData.current.current.condition.text)
+  const temperature = isCelsius
+    ? Math.round(weatherData.current.current.temp_c)
+    : Math.round(weatherData.current.current.temp_f);
+
   return (
     <div className="content-1">
       <h2>{weatherData.current.location.name}</h2>
-      <h1>{Math.round(weatherData.current.current.temp_c)}°C</h1>
+      <h1>
+        {temperature} {isCelsius ? "°C" : "°F"}
+      </h1>
       <h3>{weatherData.current.current.condition.text}</h3>
       <h4>
-      { Math.round(weatherData.forecast.forecast.forecastday[0].day.mintemp_c)}°C{" - "}
-      { Math.round(weatherData.forecast.forecast.forecastday[0].day.maxtemp_c)}°C
+        {Math.round(weatherData.forecast.forecast.forecastday[0].day.mintemp_c)}°C{" - "}
+        {Math.round(weatherData.forecast.forecast.forecastday[0].day.maxtemp_c)}°C
       </h4>
     </div>
   );
@@ -148,7 +153,6 @@ function getTempColor(minTemp, maxTemp) {
   }
 }
 
-
 function DailyWeather({ weatherData }) {
   return (
     <div className="weather_daily">
@@ -206,10 +210,10 @@ function getConditionIcon(txt){
       return "";}
 }
 
-
 function App() {
   var [location, setLocation] = useState("");
-  var [weatherData, setWeatherData] = useState(null);
+  const [weatherData, setWeatherData] = useState(null);
+  const [isCelsius, setIsCelsius] = useState(true); // State to track temperature unit
 
   const WEATHER_API_CONFIG = {
     apiKey: "5a9d2c05e78649dba29133051232905",
@@ -245,6 +249,9 @@ function App() {
   useEffect(() => {
     fetchWeather();
   }, []);
+    const handleToggleUnit = () => {
+    setIsCelsius(!isCelsius);
+  };
 
   return (
     <div className="content-container">
@@ -256,15 +263,16 @@ function App() {
 
       {weatherData && (
         <div>
-          <CurrentWeather weatherData={weatherData} />
-          <HourlyWeather weatherData={weatherData} />
-          <DailyWeather weatherData={weatherData} />
+          <CurrentWeather weatherData={weatherData} isCelsius={isCelsius} />
+          <button className="unit-toggle" onClick={handleToggleUnit}>
+            {isCelsius ? "Switch to Fahrenheit" : "Switch to Celsius"}
+          </button>
+          <HourlyWeather weatherData={weatherData} isCelsius={isCelsius} />
+          <DailyWeather weatherData={weatherData} isCelsius={isCelsius} />
         </div>
       )}
     </div>
   );
 }
 
-
 export default App;
-
