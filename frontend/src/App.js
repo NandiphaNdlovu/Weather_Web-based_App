@@ -27,16 +27,13 @@ function SearchBar({ location, setLocation, fetchWeather }) {
 }
 
 function changeBackgroundImage(weatherCondition) {
-  // Get a collection of elements with the specified class name
   var elements = document.getElementsByClassName('content-container');
 
-  // Check if any elements with the class name exist
   if (elements.length === 0) {
     console.error("No elements found with class name 'myElement'.");
     return;
   }
 
-  // Iterate over the elements and change the background image accordingly
   for (var i = 0; i < elements.length; i++) {
     var element = elements[i];
 
