@@ -39,10 +39,30 @@ function changeBackgroundImage(weatherCondition) {
 
     if (weatherCondition === 'Sunny') {
       element.style.backgroundImage = "url('https://www.kapwing.com/videos/6479f6b25173c1027b07a784')";
+    } else if (weatherCondition === 'Patchy rain possible') {
+      element.style.backgroundImage = "url('')";
+    } else if (weatherCondition === 'Cloudy') {
+      element.style.backgroundImage = "url('')";
     } else if (weatherCondition === 'Partly cloudy') {
       element.style.backgroundImage = "url('https://media.giphy.com/media/0Styincf6K2tvfjb5Q/giphy.gif')";
-    } else if (weatherCondition === 'cloudy') {
+    } else if (weatherCondition === 'Overcast') {
+      element.style.backgroundImage = "url('')";
+    } else if (weatherCondition === 'Moderate rain') {
+      element.style.backgroundImage = "url('')";
+    } else if (weatherCondition === 'Heavy rain') {
+      element.style.backgroundImage = "url('')";
+    } else if (weatherCondition === 'Moderate or heavy snow showers') {
+      element.style.backgroundImage = "url('')";
+    } else if (weatherCondition === 'Light snow') {
+      element.style.backgroundImage = "url('')";
+    } else if (weatherCondition === 'Fog') {
+      element.style.backgroundImage = "url('')";
+    } else if (weatherCondition === 'Light freezing rain') {
       element.style.backgroundImage = "url('path/to/cloudy-image.jpg')";
+    } else if (weatherCondition === 'Clear') {
+      element.style.backgroundImage = "url('')";
+    } else if (weatherCondition === 'Cloudy') {
+      element.style.backgroundImage = "url('')";
     }
     // Add more conditions for other weather conditions as needed
   }
