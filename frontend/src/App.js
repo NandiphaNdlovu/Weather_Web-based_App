@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 import "./App.css";
 
-function SearchBar({ location, setLocation, fetchWeather }) {
+function SearchBar({ location, setLocation, fetchWeather ,isCelsius}) {
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       fetchWeather();
@@ -89,7 +89,7 @@ function CurrentWeather({ weatherData, isCelsius }) {
   );
 }
 
-function HourlyWeather({ weatherData }) {
+function HourlyWeather({ weatherData ,isCelsius}) {
   const scrollContainerRef = useRef(null);
   const currentHour = new Date().getHours();
 
@@ -124,12 +124,17 @@ function HourlyWeather({ weatherData }) {
         {weatherData.forecast.forecast.forecastday[0].hour.map((hour, index) => {
           const hourIndex = (currentHour + index) % 24;
           const formattedHour = hourIndex.toString().padStart(2, "0") + ":00";
+          const temperature = isCelsius
+          ? Math.round(hour.temp_c)
+          : Math.round(hour.temp_f);
 
           return (
             <div className="content-2" key={hour.time}>
               <h2>{formattedHour}</h2>
               <img className="weather-icon" src={hour.condition.icon} alt="" />
-              <h4>{Math.round(hour.temp_c)}°</h4>
+              <h4>
+               {temperature} {isCelsius ? "°C" : "°F"}
+              </h4>
             </div>
             
           );
@@ -255,18 +260,19 @@ function App() {
 
   return (
     <div className="content-container">
+      <div>
       <SearchBar
         location={location}
         setLocation={setLocation}
         fetchWeather={fetchWeather}
       />
-
+      <button className="unit-toggle" onClick={handleToggleUnit}>
+            {isCelsius ? "Switch to Fahrenheit" : "Switch to Celsius"}
+          </button>
+      </div>
       {weatherData && (
         <div>
           <CurrentWeather weatherData={weatherData} isCelsius={isCelsius} />
-          <button className="unit-toggle" onClick={handleToggleUnit}>
-            {isCelsius ? "Switch to Fahrenheit" : "Switch to Celsius"}
-          </button>
           <HourlyWeather weatherData={weatherData} isCelsius={isCelsius} />
           <DailyWeather weatherData={weatherData} isCelsius={isCelsius} />
         </div>
