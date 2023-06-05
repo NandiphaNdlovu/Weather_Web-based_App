@@ -21,8 +21,7 @@ body {
 .content-container {
   background: rgba(108, 143, 212, 0.359);
   transition: background-image 0.5s ease;
-  /*background-image: url("https://media.giphy.com/media/0Styincf6K2tvfjb5Q/giphy.gif");*/
-  background-size: 100% 60%;
+  background-size: 400%, 300%;
   padding: 2em;
   width: 100%;
   max-width: 500px;
@@ -86,6 +85,7 @@ body {
 
 .content-2 {
   background-color: rgba(101, 137, 216, 0.5);
+  backdrop-filter: blur(5px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -141,6 +141,7 @@ body {
 
 .weather_search{
   background-color: rgba(108, 172, 218, 0.608);
+  backdrop-filter: blur(10px);
   position:fixed;
   top: 0;
   left: 0;
@@ -151,6 +152,7 @@ body {
   border-bottom-right-radius: 10px;
   padding: 1em;
 }
+
 .mInput {
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
@@ -188,6 +190,7 @@ body {
 
 .weather_daily_card{
   background-color: rgba(101, 137, 216, 0.5);
+  backdrop-filter: blur(10px);
 }
 
 ul {
