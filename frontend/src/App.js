@@ -37,31 +37,31 @@ function changeBackgroundImage(weatherCondition) {
     var element = elements[i];
 
     if (weatherCondition === 'Sunny') {
-      element.style.backgroundImage = "url('https://www.kapwing.com/videos/6479f6b25173c1027b07a784')";
+      element.style.backgroundImage = "url('https://media.giphy.com/media/lyVNcb1n5Ob0Q/giphy.gif')";
     } else if (weatherCondition === 'Patchy rain possible') {
-      element.style.backgroundImage = "url('')";
+      element.style.backgroundImage = "url('https://media.giphy.com/media/xT9GEDhzERbjDD15O8/giphy.gif')";
     } else if (weatherCondition === 'Cloudy') {
-      element.style.backgroundImage = "url('')";
+      element.style.backgroundImage = "url('https://giphy.com/clips/eternalfamilytv-eternal-family-tv-the-secret-life-of-plants-1E7kahBpbcrg3PYmv8')";
     } else if (weatherCondition === 'Partly cloudy') {
       element.style.backgroundImage = "url('https://media.giphy.com/media/0Styincf6K2tvfjb5Q/giphy.gif')";
     } else if (weatherCondition === 'Overcast') {
-      element.style.backgroundImage = "url('')";
+      element.style.backgroundImage = "url('https://media.giphy.com/media/xT9GEDhzERbjDD15O8/giphy.gif')";
     } else if (weatherCondition === 'Moderate rain') {
-      element.style.backgroundImage = "url('')";
+      element.style.backgroundImage = "url('https://media.giphy.com/media/t7Qb8655Z1VfBGr5XB/giphy.gif')";
     } else if (weatherCondition === 'Heavy rain') {
-      element.style.backgroundImage = "url('')";
+      element.style.backgroundImage = "url('https://media.giphy.com/media/Der27bjTYm9hZEW8lk/giphy.gif')";
     } else if (weatherCondition === 'Moderate or heavy snow showers') {
-      element.style.backgroundImage = "url('')";
+      element.style.backgroundImage = "url('https://media.giphy.com/media/rRmBOCZDJJGU0/giphy.gif')";
     } else if (weatherCondition === 'Light snow') {
-      element.style.backgroundImage = "url('')";
+      element.style.backgroundImage = "url('https://media.giphy.com/media/7Bgpw7PwdxoDC/giphy.gif')";
     } else if (weatherCondition === 'Fog') {
-      element.style.backgroundImage = "url('')";
+      element.style.backgroundImage = "url('https://media.giphy.com/media/AIGF7ljcNKZI4/giphy.gif')";
     } else if (weatherCondition === 'Light freezing rain') {
       element.style.backgroundImage = "url('path/to/cloudy-image.jpg')";
     } else if (weatherCondition === 'Clear') {
-      element.style.backgroundImage = "url('')";
-    } else if (weatherCondition === 'Cloudy') {
-      element.style.backgroundImage = "url('')";
+      element.style.backgroundImage = "url('https://media.giphy.com/media/gu6Wt3BmcoCDPR1wvp/giphy.gif')";
+    } else {
+      element.style.backgroundImage = "url('https://media.giphy.com/media/xT9GEDhzERbjDD15O8/giphy.gif')";
     }
     // Add more conditions for other weather conditions as needed
   }
@@ -133,7 +133,7 @@ function HourlyWeather({ weatherData ,isCelsius}) {
               <h2>{formattedHour}</h2>
               <img className="weather-icon" src={hour.condition.icon} alt="" />
               <h4>
-               {temperature} {isCelsius ? "°C" : "°F"}
+              {temperature} {isCelsius ? "°C" : "°F"}
               </h4>
             </div>
             
@@ -242,7 +242,7 @@ function App() {
 
       const [currentData, forecastData] = await Promise.all([
         currentResponse.json(),
-        forecastResponse.json(),
+        forecastResponse.json(),  
       ]);
 
       setWeatherData({ current: currentData, forecast: forecastData });
