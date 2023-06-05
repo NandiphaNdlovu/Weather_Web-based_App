@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 
 import "./App.css";
 
-function SearchBar({ location, setLocation, fetchWeather ,isCelsius}) {
+function SearchBar({ location, setLocation, fetchWeather }) {
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       fetchWeather();
@@ -12,6 +12,7 @@ function SearchBar({ location, setLocation, fetchWeather ,isCelsius}) {
 
   return (
     <div className="weather_search">
+      <div className="searchContainer">
       <input
         className="mInput"
         type="text"
@@ -21,6 +22,7 @@ function SearchBar({ location, setLocation, fetchWeather ,isCelsius}) {
         onKeyPress={handleKeyPress}
       />
       <button className="mButton" onClick={fetchWeather}>Search</button>
+      </div>
     </div>
   );
 }
@@ -43,9 +45,9 @@ function changeBackgroundImage(weatherCondition) {
     } else if (weatherCondition === 'Cloudy') {
       element.style.backgroundImage = "url('https://giphy.com/clips/eternalfamilytv-eternal-family-tv-the-secret-life-of-plants-1E7kahBpbcrg3PYmv8')";
     } else if (weatherCondition === 'Partly cloudy') {
-      element.style.backgroundImage = "url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExODk3ODViMWRmNTg5NmNhOWQzZGI4ZjY2ZWJlMWI3NTU1M2NiZTkwMiZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/xT9GEDhzERbjDD15O8/giphy.gif')";
+      element.style.backgroundImage = "url('https://media.giphy.com/media/0Styincf6K2tvfjb5Q/giphy.gif')";
     } else if (weatherCondition === 'Overcast') {
-      element.style.backgroundImage = "url('https://media.giphy.com/media/xT9GEDhzERbjDD15O8/giphy.gif')";
+      element.style.backgroundImage = "url('https://media.giphy.com/media/Der27bjTYm9hZEW8lk/giphy.gif')";
     } else if (weatherCondition === 'Moderate rain') {
       element.style.backgroundImage = "url('https://media.giphy.com/media/t7Qb8655Z1VfBGr5XB/giphy.gif')";
     } else if (weatherCondition === 'Heavy rain') {
@@ -61,7 +63,7 @@ function changeBackgroundImage(weatherCondition) {
     } else if (weatherCondition === 'Clear') {
       element.style.backgroundImage = "url('https://media.giphy.com/media/gu6Wt3BmcoCDPR1wvp/giphy.gif')";
     } else {
-      element.style.backgroundImage = "url('https://media.giphy.com/media/xT9GEDhzERbjDD15O8/giphy.gif')";
+      element.style.backgroundImage = "url('https://media.giphy.com/media/Der27bjTYm9hZEW8lk/giphy.gif')";
     }
     // Add more conditions for other weather conditions as needed
   }
@@ -277,13 +279,14 @@ function App() {
   };
 
   return (
-    <div className="content-container">
-      <div>
-      <SearchBar
+    <div>
+    <SearchBar
         location={location}
         setLocation={setLocation}
         fetchWeather={fetchWeather}
       />
+    <div className="content-container">
+      <div>
       <button className="unit-toggle" onClick={handleToggleUnit}>
         {isCelsius ? "Switch to Fahrenheit" : "Switch to Celsius"}
       </button>
@@ -295,6 +298,7 @@ function App() {
           <DailyWeather weatherData={weatherData} isCelsius={isCelsius} />
         </div>
       )}
+    </div>
     </div>
   );
 }
