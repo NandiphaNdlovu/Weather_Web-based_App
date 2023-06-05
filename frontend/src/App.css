@@ -22,7 +22,7 @@ body {
   background: rgba(108, 143, 212, 0.359);
   transition: background-image 0.5s ease;
   /*background-image: url("https://media.giphy.com/media/0Styincf6K2tvfjb5Q/giphy.gif");*/
-  background-size: 1256px;
+  background-size: 100% 60%;
   padding: 2em;
   width: 100%;
   max-width: 500px;
@@ -30,6 +30,13 @@ body {
   margin-top: 5em;
   border-radius: 2.5rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+.unit-toggle{
+  background-color: #473b5c;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 10px;
 }
 
 .content-container .weather_today,

@@ -43,7 +43,7 @@ function changeBackgroundImage(weatherCondition) {
     } else if (weatherCondition === 'Cloudy') {
       element.style.backgroundImage = "url('https://giphy.com/clips/eternalfamilytv-eternal-family-tv-the-secret-life-of-plants-1E7kahBpbcrg3PYmv8')";
     } else if (weatherCondition === 'Partly cloudy') {
-      element.style.backgroundImage = "url('https://media.giphy.com/media/0Styincf6K2tvfjb5Q/giphy.gif')";
+      element.style.backgroundImage = "url('https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExODk3ODViMWRmNTg5NmNhOWQzZGI4ZjY2ZWJlMWI3NTU1M2NiZTkwMiZlcD12MV9pbnRlcm5hbF9naWZzX2dpZklkJmN0PWc/xT9GEDhzERbjDD15O8/giphy.gif')";
     } else if (weatherCondition === 'Overcast') {
       element.style.backgroundImage = "url('https://media.giphy.com/media/xT9GEDhzERbjDD15O8/giphy.gif')";
     } else if (weatherCondition === 'Moderate rain') {
@@ -57,7 +57,7 @@ function changeBackgroundImage(weatherCondition) {
     } else if (weatherCondition === 'Fog') {
       element.style.backgroundImage = "url('https://media.giphy.com/media/AIGF7ljcNKZI4/giphy.gif')";
     } else if (weatherCondition === 'Light freezing rain') {
-      element.style.backgroundImage = "url('path/to/cloudy-image.jpg')";
+      element.style.backgroundImage = "url('https://wifflegif.com/gifs/325665-white-out-snow-fall-gif')";
     } else if (weatherCondition === 'Clear') {
       element.style.backgroundImage = "url('https://media.giphy.com/media/gu6Wt3BmcoCDPR1wvp/giphy.gif')";
     } else {
@@ -72,7 +72,17 @@ function CurrentWeather({ weatherData, isCelsius }) {
 
   const temperature = isCelsius
     ? Math.round(weatherData.current.current.temp_c)
-    : Math.round(weatherData.current.current.temp_f);
+    : Math.round(weatherData.current.current.temp_f)
+  ;
+  const tempMin = isCelsius
+    ? Math.round(weatherData.forecast.forecast.forecastday[0].day.mintemp_c)
+    : Math.round(weatherData.forecast.forecast.forecastday[0].day.mintemp_f)
+  ;
+  const tempMax = isCelsius
+    ? Math.round(weatherData.forecast.forecast.forecastday[0].day.maxtemp_c)
+    : Math.round(weatherData.forecast.forecast.forecastday[0].day.maxtemp_f)
+  ;
+
 
   return (
     <div className="content-1">
@@ -82,8 +92,8 @@ function CurrentWeather({ weatherData, isCelsius }) {
       </h1>
       <h3>{weatherData.current.current.condition.text}</h3>
       <h4>
-        {Math.round(weatherData.forecast.forecast.forecastday[0].day.mintemp_c)}°C{" - "}
-        {Math.round(weatherData.forecast.forecast.forecastday[0].day.maxtemp_c)}°C
+        {tempMin} {isCelsius ? "°C" : "°F"}{" - "}
+        {tempMax} {isCelsius ? "°C" : "°F"}
       </h4>
     </div>
   );
@@ -158,7 +168,15 @@ function getTempColor(minTemp, maxTemp) {
   }
 }
 
-function DailyWeather({ weatherData }) {
+function DailyWeather({ weatherData,isCelsius }) {
+  const tempMin = isCelsius
+  ? Math.round(weatherData.forecast.forecast.forecastday[0].day.mintemp_c)
+  : Math.round(weatherData.forecast.forecast.forecastday[0].day.mintemp_f)
+  ;
+  const tempMax = isCelsius
+  ? Math.round(weatherData.forecast.forecast.forecastday[0].day.maxtemp_c)
+  : Math.round(weatherData.forecast.forecast.forecastday[0].day.maxtemp_f)
+;
   return (
     <div className="weather_daily">
       <ul>
@@ -174,9 +192,9 @@ function DailyWeather({ weatherData }) {
               <img src={getConditionIcon(day.day.condition.text)} alt="{day.day.condition.icon}" />
             </div>
             <div className="temp">
-              <h2>{Math.round(day.day.mintemp_c)}°C</h2>
+              <h2> {tempMin} {isCelsius ? "°C" : "°F"}</h2>
               <div className={`temp-bar ${getTempColor(day.day.mintemp_c, day.day.maxtemp_c)}`}></div>
-              <h2>{Math.round(day.day.maxtemp_c)}°C</h2>
+              <h2> {tempMax} {isCelsius ? "°C" : "°F"}</h2>
             </div>
           </li>
         ))}
@@ -267,8 +285,8 @@ function App() {
         fetchWeather={fetchWeather}
       />
       <button className="unit-toggle" onClick={handleToggleUnit}>
-            {isCelsius ? "Switch to Fahrenheit" : "Switch to Celsius"}
-          </button>
+        {isCelsius ? "Switch to Fahrenheit" : "Switch to Celsius"}
+      </button>
       </div>
       {weatherData && (
         <div>
