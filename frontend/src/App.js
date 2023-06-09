@@ -191,7 +191,7 @@ function DailyWeather({ weatherData,isCelsius }) {
             </div>
             <div className="info">
               <h3>{day.day.condition.text}</h3>
-              <img src={getConditionIcon(day.day.condition.text)} alt="{day.day.condition.icon}" />
+              <img className="img-daily" src={getConditionIcon(day.day.condition.text)} alt="{day.day.condition.icon}" />
             </div>
             <div className="temp">
               <h2> {tempMin} {isCelsius ? "°C" : "°F"}</h2>

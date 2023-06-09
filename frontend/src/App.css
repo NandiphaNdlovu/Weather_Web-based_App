@@ -195,7 +195,12 @@ body {
   background-color: rgba(101, 137, 216, 0.5);
   backdrop-filter: blur(10px);
 }
-
+.weather-icon{
+  mix-blend-mode: color-burn;
+}
+.img-daily{
+  mix-blend-mode: color-burn;
+}
 ul {
   list-style: none;
   padding: 0;
